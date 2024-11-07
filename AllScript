@@ -17,7 +17,7 @@ OrionLib:MakeNotification(
 
 function getName()
     local random = Random.new()
-    local str = {"猫猫", "(>^ω^<)喵"}
+    local str = {"猫猫", "(>^ω^<)喵","┗|｀O′|┛ 嗷~~"}
     local NameTxt = ""
     for i = 1, 1 do
         NameTxt = NameTxt .. str[random:NextInteger(1, #str)]
