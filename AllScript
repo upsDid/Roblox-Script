@@ -1,0 +1,195 @@
+local autMouse = nil
+local TP = nil
+local TP_Add_Y = 5
+local TP_Time = 1
+local GameID = nil
+
+local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/shlexware/Orion/main/source")))()
+--local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/main/source.lua")))()
+OrionLib:MakeNotification(
+    {
+        Name = "脚本加载完毕!",
+        Content = "欢迎使用脚本中心!",
+        Image = "rbxassetid://12932449216",
+        Time = 5
+    }
+)
+
+function getName()
+    local random = Random.new()
+    local str = {"猫猫", "(>^ω^<)喵"}
+    local NameTxt = ""
+    for i = 1, 1 do
+        NameTxt = NameTxt .. str[random:NextInteger(1, #str)]
+    end
+    return NameTxt .. "中心"
+end
+
+local Window = OrionLib:MakeWindow({Name = getName(), HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = "→"})
+
+local Tab1 = Window:MakeTab({Name = "基础功能", Icon = "rbxassetid://7733960981", PremiumOnly = false})
+
+GameID = game.PlaceId
+Tab1:AddLabel("当前游戏ID: " .. GameID)
+local pot = game.Players.LocalPlayer.Character.UpperTorso.Position
+local potLabel = Tab1:AddLabel("当前坐标:" .. string.format(" %.0f,%.0f,%.0f", pot.x, pot.y, pot.z))
+
+Tab1:AddButton(
+    {
+        Name = "更新角色坐标",
+        Callback = function()
+            pot = game:GetService("Players").LocalPlayer.Character.UpperTorso.Position
+            potLabel:Set("当前坐标:" .. string.format(" %.0f,%.0f,%.0f", pot.x, pot.y, pot.z))
+        end
+    }
+)
+
+if GameID == 3956818381 then
+    function autMouseConnect()
+        if autMouse == nil then
+            return
+        end
+        while autMouse.Value do
+            game.Players.LocalPlayer.ninjaEvent:FireServer("swingKatana")
+            wait(0.1)
+        end
+    end
+
+    function SetTP()
+        if TP.Value == "x125忍术" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(5032, 40, 1600))
+        elseif TP.Value == "x35金币" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(78, 91264, 125))
+        elseif TP.Value == "禅心军团" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-28, 50100, -226))
+        elseif TP.Value == "神秘水域(光明)" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(358, 8834, 105))
+        elseif TP.Value == "传奇之剑(光明)" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(1834, 50, -141))
+        elseif TP.Value == "岩浆坑(黑暗)" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-117, 12962, 271))
+        elseif TP.Value == "龙卷风(黑暗)" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(326, 16882, -10))
+        elseif TP.Value == "克隆" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(4580, 141, 1429))
+        end
+    end
+
+    local Tab2 = Window:MakeTab({Name = "忍者传奇", Icon = "rbxassetid://6045248793", PremiumOnly = false})
+
+    Tab2:AddLabel("游戏名称: 忍者传奇  Ninja Legends")
+    -- 自动点击鼠标
+    autMouse =
+        Tab2:AddToggle(
+        {
+            Name = "自动忍术",
+            Callback = function()
+                autMouseConnect()
+            end
+        }
+    )
+
+    Tab2:AddButton(
+        {
+            Name = "所有宝箱奖励",
+            Callback = function()
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(418, 74564 + TP_Add_Y, -42))
+                wait(TP_Time)
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(418, 74564 + TP_Add_Y, -42))
+                wait(TP_Time)
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(418, 70393 + TP_Add_Y, -42))
+                wait(TP_Time)
+                -- 宝箱 忍术
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(418, 66791 + TP_Add_Y, -42))
+                wait(TP_Time)
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(418, 52729 + TP_Add_Y, -42))
+                wait(TP_Time)
+                -- 宝箱 宝石
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(418, 46132 + TP_Add_Y, -42))
+                wait(TP_Time)
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-44, 33363 + TP_Add_Y, -171))
+                wait(TP_Time)
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(43, 28263 + TP_Add_Y, 58))
+                wait(TP_Time)
+                -- 宝箱 灵魂
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(45, 24076 + TP_Add_Y, 65))
+                wait(TP_Time)
+                -- 宝箱 宠物经验
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(45, 17693 + TP_Add_Y, 65))
+                wait(TP_Time)
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(45, 13686 + TP_Add_Y, 65))
+                wait(TP_Time)
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(45, 9291 + TP_Add_Y, 65))
+                wait(TP_Time)
+                -- 宝箱 金币
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(45, 5663 + TP_Add_Y, 65))
+                wait(TP_Time)
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(200, 4054 + TP_Add_Y, 60))
+                wait(TP_Time)
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(49, 773 + TP_Add_Y, -178))
+                wait(TP_Time)
+                -- 宝箱 气
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(516, 149 + TP_Add_Y, 361))
+                wait(TP_Time)
+                -- 阵营
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(139, 39317 + TP_Add_Y, 65))
+            end
+        }
+    )
+
+    TP =
+        Tab2:AddDropdown(
+        {
+            Name = "传送选择",
+            Options = {
+                "x125忍术",
+                "x35金币",
+                "禅心军团",
+                "神秘水域(光明)",
+                "传奇之剑(光明)",
+                "岩浆坑(黑暗)",
+                "龙卷风(黑暗)",
+                "克隆"
+            }
+        }
+    )
+
+    Tab2:AddButton(
+        {
+            Name = "开始传送",
+            Callback = function()
+                SetTP()
+            end
+        }
+    )
+
+    local drop = Tab2:AddDropdown({Name = "其他脚本选择", Options = {"脚本1", "脚本2", "脚本3"}})
+
+    Tab2:AddButton(
+        {
+            Name = "执行脚本",
+            Callback = function()
+                if drop.Value == "脚本1" then
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/XRoLLu/Rolly_Hub/main/open-source-trash-loader.exe.yeah"))()
+                elseif drop.Value == "脚本2" then
+                    loadstring(game:HttpGet(("https://cdn.julman.fr/scripts/33.lua"), true))()
+                elseif drop.Value == "脚本3" then
+                    loadstring(game:HttpGet(("https://raw.githubusercontent.com/AppleScript001/Ninjas_Legends/main/README.md"), true))()
+                end
+            end
+        }
+    )
+end
+
+if GameID == 18901165922 then
+end
